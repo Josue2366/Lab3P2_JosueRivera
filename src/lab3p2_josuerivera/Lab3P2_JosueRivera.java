@@ -287,8 +287,24 @@ static Random rand = new Random();
                         System.out.println("2. huir");
                         System.out.println("Introduzca su opcion");
                         int cap_huir = sc.nextInt();
-                        while(cap_huir < 1 || cap_)
-                    }    
+                        while(cap_huir < 1 || cap_huir > 2){
+                            System.out.println("////Menu////");
+                            System.out.println("1. capturar pokemon");
+                            System.out.println("2. huir");
+                            System.out.println("Introduzca su opcion");
+                            cap_huir = sc.nextInt();
+                        }
+                        switch(cap_huir){
+                            case 1:
+                                
+                                break;
+                                
+                            case 2:
+                                break;
+                        }// Fin de switch (cap_huir)
+                        break;
+                    }
+                    
                     
             }// fin del switch
         }// fin del while (Respuesta)
