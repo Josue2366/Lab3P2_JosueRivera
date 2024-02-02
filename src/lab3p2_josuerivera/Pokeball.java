@@ -57,14 +57,14 @@ public class Pokeball {
     
     public boolean repetido(ArrayList<Pokeball> lista, int x){
         if (lista.isEmpty()){
-            return true;
+            return false;
         }else{
             for (Pokeball p : lista) {
                 if (p.getNumero_serie() == x){
-                    return false;
+                    return true;
                 }
             }
-            return true;
+            return false;
         }
     }
     

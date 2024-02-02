@@ -172,21 +172,92 @@ static Scanner cs = new Scanner (System.in);// Scanner de String
                     }
                     
                 case 4:
-                    System.out.println("////Menu////");
-                    System.out.println("1. Fire type");
-                    System.out.println("2. Water type");
-                    System.out.println("3. Grass type");
-                    int opcion = sc.nextInt();
-                    while(opcion < 1 || opcion > 3){
+                    int cont = 0;
+                    if (lista.isEmpty()){
+                        System.out.println("La lista de pokemones esta vacia");
+                        break;
+                    }
+                    else{
                         System.out.println("////Menu////");
                         System.out.println("1. Fire type");
                         System.out.println("2. Water type");
                         System.out.println("3. Grass type");
-                        opcion = sc.nextInt();
-                    }
-                    switch (opcion){
-                        
-                    }// fin del switch (opcion)
+                        int opcion = sc.nextInt();
+                        while(opcion < 1 || opcion > 3){
+                            System.out.println("////Menu////");
+                            System.out.println("1. Fire type");
+                            System.out.println("2. Water type");
+                            System.out.println("3. Grass type");
+                            opcion = sc.nextInt();
+                        }
+                        switch (opcion){
+                            case 1:
+                                for (Pokemon i : lista) {
+                                    if (i instanceof Fire_Type){
+                                        System.out.println(lista.indexOf(i)+". "+ i);
+                                        cont ++;
+                                    }
+                                }
+                                if (cont == 0){
+                                    System.out.println("No se encuentran de ese tipo existente en la lista");
+                                    cont =0;
+                                    break;
+                                }
+                                cont = 0;
+                                System.out.println("Introduzca una opcion valida:");
+                                int eliminar = sc.nextInt();
+                                while (lista.get(eliminar) instanceof Fire_Type == false){
+                                    System.out.println("Introduzca una opcion valida:");
+                                    eliminar = sc.nextInt();
+                                }
+                                lista.remove(eliminar);
+                                break;
+                                
+                            case 2:
+                                for (Pokemon i : lista) {
+                                    if (i instanceof Water_Type){
+                                        System.out.println(lista.indexOf(i)+". "+ i);
+                                        cont ++;
+                                    }
+                                }
+                                if (cont == 0){
+                                    System.out.println("No se encuentran de ese tipo existente en la lista");
+                                    cont =0;
+                                    break;
+                                }
+                                cont = 0;
+                                System.out.println("Introduzca una opcion valida:");
+                                eliminar = sc.nextInt();
+                                while (lista.get(eliminar) instanceof Water_Type == false){
+                                    System.out.println("Introduzca una opcion valida:");
+                                    eliminar = sc.nextInt();
+                                }
+                                lista.remove(eliminar);
+                                break;
+                                
+                            case 3:
+                                for (Pokemon i : lista) {
+                                    if (i instanceof Grass_Type){
+                                        System.out.println(lista.indexOf(i)+". "+ i);
+                                        cont++;
+                                    }
+                                }
+                                if (cont == 0){
+                                    System.out.println("No se encuentran de ese tipo existente en la lista");
+                                    cont =0;
+                                    break;
+                                }
+                                cont = 0;
+                                System.out.println("Introduzca una opcion valida:");
+                                eliminar = sc.nextInt();
+                                while (lista.get(eliminar) instanceof Grass_Type == false){
+                                    System.out.println("Introduzca una opcion valida:");
+                                    eliminar = sc.nextInt();
+                                }
+                                lista.remove(eliminar);
+                                break;
+                        }// fin del switch (opcion)
+                    }    
             }// fin del switch
         }// fin del while (Respuesta)
     }// Fin del main
