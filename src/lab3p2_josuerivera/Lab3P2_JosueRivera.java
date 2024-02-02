@@ -270,6 +270,7 @@ static Random rand = new Random();
                         for (Pokeball i : pokeballs) {
                             System.out.println(i);
                         }
+                        System.out.println("Introduzca lo pokebola que quiere:");
                         int bola = sc.nextInt();
                         while(bola < 0 || bola > pokeballs.size()){
                             for (Pokeball i : pokeballs) {
@@ -296,7 +297,42 @@ static Random rand = new Random();
                         }
                         switch(cap_huir){
                             case 1:
-                                
+                                if (pokeballs.get(bola).getEficiencia() == 3){
+                                    lista.get(poke).setBall(pokeballs.get(bola));
+                                    lista.get(poke).setCapturado(true);
+                                    pokeballs.remove(bola);
+                                    System.out.println("Atrapaste al pokemon"+lista.get(poke).getNombre());
+                                }
+                                else{
+                                    int posibilidad = rand.nextInt(100);
+                                    if (pokeballs.get(bola).getEficiencia() == 2){
+                                        if (posibilidad <= 67){
+                                            lista.get(poke).setBall(pokeballs.get(bola));
+                                            lista.get(poke).setCapturado(true);
+                                            pokeballs.remove(bola);
+                                            System.out.println("Atrapaste al pokemon"+lista.get(poke).getNombre());
+                                            
+                                        }
+                                        else {
+                                            System.out.println("no lograste atraparlo");
+                                            break;
+                                        }
+                                    }
+                                    else if(pokeballs.get(bola).getEficiencia() == 1){
+                                        if (posibilidad <= 33){
+                                            lista.get(poke).setBall(pokeballs.get(bola));
+                                            lista.get(poke).setCapturado(true);
+                                            pokeballs.remove(bola);
+                                            System.out.println("Atrapaste al pokemon"+lista.get(poke).getNombre());
+                                            
+                                        }
+                                        else{
+                                            System.out.println("no lograste atraparlo");
+                                            break;
+                                        }
+                                    }
+                                    break;
+                                }
                                 break;
                                 
                             case 2:
@@ -304,6 +340,9 @@ static Random rand = new Random();
                         }// Fin de switch (cap_huir)
                         break;
                     }
+                    
+                case 6:
+                    
                     
                     
             }// fin del switch
