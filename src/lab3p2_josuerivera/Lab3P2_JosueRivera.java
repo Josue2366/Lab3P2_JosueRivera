@@ -5,6 +5,7 @@
 package lab3p2_josuerivera;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -14,7 +15,7 @@ import java.util.Scanner;
 public class Lab3P2_JosueRivera {
 static Scanner sc = new Scanner(System.in);// Scanner de integer
 static Scanner cs = new Scanner (System.in);// Scanner de String
-
+static Random rand = new Random();
     /**
      * @param args the command line arguments
      */
@@ -257,7 +258,38 @@ static Scanner cs = new Scanner (System.in);// Scanner de String
                                 lista.remove(eliminar);
                                 break;
                         }// fin del switch (opcion)
+                        break;
+                    }
+                    
+                case 5:
+                    if (lista.isEmpty() || pokeballs.isEmpty()){
+                        System.out.println("una de las listas esta vacia");
+                        break;
+                    }
+                    else{
+                        for (Pokeball i : pokeballs) {
+                            System.out.println(i);
+                        }
+                        int bola = sc.nextInt();
+                        while(bola < 0 || bola > pokeballs.size()){
+                            for (Pokeball i : pokeballs) {
+                            System.out.println(i);
+                            }
+                            bola = sc.nextInt();
+                        }
+                        int poke = rand.nextInt(lista.size());
+                        while(lista.get(poke).isCapturado()){
+                            poke = rand.nextInt(lista.size());
+                        }
+                        System.out.println("EL POKEMON " + lista.get(poke).getNombre()+" HA APARECIDO");
+                        System.out.println("////Menu////");
+                        System.out.println("1. capturar pokemon");
+                        System.out.println("2. huir");
+                        System.out.println("Introduzca su opcion");
+                        int cap_huir = sc.nextInt();
+                        while(cap_huir < 1 || cap_)
                     }    
+                    
             }// fin del switch
         }// fin del while (Respuesta)
     }// Fin del main
