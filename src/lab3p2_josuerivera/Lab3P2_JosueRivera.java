@@ -342,7 +342,18 @@ static Random rand = new Random();
                     }
                     
                 case 6:
-                    
+                    if (lista.isEmpty()){
+                        System.out.println("La lista de pokemones esta vacia");
+                        break;
+                    }
+                    else{
+                        System.out.println("////Menu////");
+                        System.out.println("1. Fire type");
+                        System.out.println("2. Water type");
+                        System.out.println("3. Grass type");
+                        System.out.println("Introdice tu opcion:");
+                        int 
+                    }
                     
                     
             }// fin del switch
