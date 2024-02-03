@@ -207,6 +207,10 @@ static Random rand = new Random();
                                 cont = 0;
                                 System.out.println("Introduzca una opcion valida:");
                                 int eliminar = sc.nextInt();
+                                while(eliminar < 0 || eliminar > lista.size() - 1){
+                                    System.out.println("Introduzca una opcion valida:");
+                                    eliminar = sc.nextInt();
+                                }
                                 while (lista.get(eliminar) instanceof Fire_Type == false){
                                     System.out.println("Introduzca una opcion valida:");
                                     eliminar = sc.nextInt();
@@ -229,6 +233,10 @@ static Random rand = new Random();
                                 cont = 0;
                                 System.out.println("Introduzca una opcion valida:");
                                 eliminar = sc.nextInt();
+                                while(eliminar < 0 || eliminar > lista.size() - 1){
+                                    System.out.println("Introduzca una opcion valida:");
+                                    eliminar = sc.nextInt();
+                                }
                                 while (lista.get(eliminar) instanceof Water_Type == false){
                                     System.out.println("Introduzca una opcion valida:");
                                     eliminar = sc.nextInt();
@@ -251,6 +259,10 @@ static Random rand = new Random();
                                 cont = 0;
                                 System.out.println("Introduzca una opcion valida:");
                                 eliminar = sc.nextInt();
+                                while(eliminar < 0 || eliminar > lista.size() - 1){
+                                    System.out.println("Introduzca una opcion valida:");
+                                    eliminar = sc.nextInt();
+                                }
                                 while (lista.get(eliminar) instanceof Grass_Type == false){
                                     System.out.println("Introduzca una opcion valida:");
                                     eliminar = sc.nextInt();
@@ -342,6 +354,7 @@ static Random rand = new Random();
                     }
                     
                 case 6:
+                    int cont2 = 0;
                     if (lista.isEmpty()){
                         System.out.println("La lista de pokemones esta vacia");
                         break;
@@ -352,7 +365,50 @@ static Random rand = new Random();
                         System.out.println("2. Water type");
                         System.out.println("3. Grass type");
                         System.out.println("Introdice tu opcion:");
-                        int 
+                        int elemento = sc.nextInt();
+                        while(elemento < 1 || elemento > 3){
+                            System.out.println("////Menu////");
+                            System.out.println("1. Fire type");
+                            System.out.println("2. Water type");
+                            System.out.println("3. Grass type");
+                            System.out.println("Introdice tu opcion:");
+                            elemento = sc.nextInt();
+                        }
+                        switch(elemento){
+                            case 1:
+                               for (Pokemon i : lista) {
+                                    if (i instanceof Fire_Type && i.isCapturado()){
+                                        System.out.println(lista.indexOf(i)+". "+ i);
+                                        cont2 ++;
+                                    }
+                                }
+                                if (cont2 == 0){
+                                    System.out.println("No se encuentran de ese tipo existente en la lista");
+                                    cont2 =0;
+                                    break;
+                                }
+                                cont2 = 0;
+                                System.out.println("Introduzca una opcion valida:");
+                                int modificar = sc.nextInt();
+                                while(modificar < 0 || modificar > lista.size() - 1){
+                                    System.out.println("Introduzca una opcion valida:");
+                                    modificar = sc.nextInt();
+                                }
+                                while (lista.get(modificar) instanceof Fire_Type == false || lista.get(modificar).isCapturado() == false){
+                                    System.out.println("Introduzca una opcion valida:");
+                                    modificar = sc.nextInt();
+                                }
+                                System.out.println("Introduzca el nuevo nombre:");
+                                String nombre2 = cs.nextLine();
+                                lista.get(modificar).setNombre(nombre2);
+                                System.out.println("Introduzca el nuevo numero de la pokedex:");
+                                int num = sc.nextInt();
+                                lista.get(modificar).setEntrada(num);
+                                System.out.println("Introduzca la potencia de llamas:");
+                                int llamas2 = sc.nextInt();
+                                ((Fire_Type)lista.get(modificar)).setLlamas(llamas2);
+                                
+                        }// Fin del Switch elemento
                     }
                     
                     
