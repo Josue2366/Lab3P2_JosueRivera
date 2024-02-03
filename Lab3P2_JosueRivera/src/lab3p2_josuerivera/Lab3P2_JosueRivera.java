@@ -281,7 +281,7 @@ static Random rand = new Random();
                     }
                     else{
                         for (Pokeball i : pokeballs) {
-                            System.out.println(i);
+                            System.out.println(pokeballs.indexOf(i)+". "+i);
                         }
                         System.out.println("Introduzca lo pokebola que quiere:");
                         int bola = sc.nextInt();
@@ -391,7 +391,7 @@ static Random rand = new Random();
                                 cont2 = 0;
                                 System.out.println("Introduzca una opcion valida:");
                                 int modificar = sc.nextInt();
-                                while(modificar < 0 || modificar >= lista.size() ){
+                                while(modificar < 0 || modificar >= lista.size()-1 ){
                                     System.out.println("Introduzca una opcion valida:");
                                     modificar = sc.nextInt();
                                 }
@@ -400,17 +400,42 @@ static Random rand = new Random();
                                     System.out.println("Introduzca una opcion valida:");
                                     modificar = sc.nextInt();
                                 }
-                                System.out.println("Introduzca el nuevo nombre:");
-                                String nombre2 = cs.nextLine();
-                                lista.get(modificar).setNombre(nombre2);
-                                System.out.println("Introduzca el nuevo numero de la pokedex:");
-                                int num = sc.nextInt();
-                                lista.get(modificar).setEntrada(num);
-                                System.out.println("Introduzca la potencia de llamas:");
-                                int llamas2 = sc.nextInt();
-                                ((Fire_Type)lista.get(modificar)).setLlamas(llamas2);
-                                System.out.println("Se completo el cambio con exito");
+                                System.out.println("////Menu////");
+                                System.out.println("1. nombre");
+                                System.out.println("2. Pokedex");
+                                System.out.println("3. potencia de llamas");
+                                int change = sc.nextInt();
+                                while(change < 1 || change > 3){
+                                    System.out.println("////Menu////");
+                                    System.out.println("1. nombre");
+                                    System.out.println("2. Pokedex");
+                                    System.out.println("3. potencia de llamas");
+                                    change = sc.nextInt();
+                                }
+                                switch(change){
+                                    case 1:
+                                        System.out.println("Introduzca el nuevo nombre:");
+                                        String nombre2 = cs.nextLine();
+                                        lista.get(modificar).setNombre(nombre2);
+                                        break;
+                                        
+                                    case 2:
+                                        System.out.println("Introduzca el nuevo numero de la pokedex:");
+                                        int num = sc.nextInt();
+                                        lista.get(modificar).setEntrada(num);
+                                        break;
+                                        
+                                    case 3:
+                                        System.out.println("Introduzca la potencia de llamas:");
+                                        int llamas2 = sc.nextInt();
+                                        ((Fire_Type)lista.get(modificar)).setLlamas(llamas2);
+                                        
+                                        break;
+                                }
+                                System.out.println("El cambio se completo con exito");
                                 break;
+                                
+                                
                                 
                             case 2:
                                 for (Pokemon i : lista) {
@@ -427,7 +452,7 @@ static Random rand = new Random();
                                 cont2 = 0;
                                 System.out.println("Introduzca una opcion valida:");
                                 modificar = sc.nextInt();
-                                while(modificar < 0 || modificar > lista.size() - 1){
+                                while(modificar < 0 || modificar >= lista.size() - 1){
                                     System.out.println("Introduzca una opcion valida:");
                                     modificar = sc.nextInt();
                                 }
@@ -436,33 +461,57 @@ static Random rand = new Random();
                                     System.out.println("Introduzca una opcion valida:");
                                     modificar = sc.nextInt();
                                 }
-                                System.out.println("Introduzca el nuevo nombre:");
-                                nombre2 = cs.nextLine();
-                                lista.get(modificar).setNombre(nombre2);
-                                System.out.println("Introduzca el nuevo numero de la pokedex:");
-                                num = sc.nextInt();
-                                lista.get(modificar).setEntrada(num);
-                                System.out.println("el pokemon puede sobrevivir en agua");
-                                System.out.println("1. True");
-                                System.out.println("2. False");
-                                int agua = sc.nextInt();
-                                while(agua < 1 || agua > 2){
-                                    System.out.println("el pokemon puede sobrevivir en agua");
-                                    System.out.println("1. True");
-                                    System.out.println("2. False");
-                                    agua = sc.nextInt();
+                                System.out.println("////Menu////");
+                                System.out.println("1. nombre");
+                                System.out.println("2. Pokedex");
+                                System.out.println("3. potencia de llamas");
+                                change = sc.nextInt();
+                                while(change < 1 || change > 3){
+                                    System.out.println("////Menu////");
+                                    System.out.println("1. nombre");
+                                    System.out.println("2. Pokedex");
+                                    System.out.println("3. potencia de llamas");
+                                    change = sc.nextInt();
                                 }
-                                switch(agua){
+                                switch(change){
                                     case 1:
-                                        ((Water_Type)lista.get(modificar)).setSobrevive_agua(true);
+                                        System.out.println("Introduzca el nuevo nombre:");
+                                        String nombre2 = cs.nextLine();
+                                        lista.get(modificar).setNombre(nombre2);
                                         break;
                                         
                                     case 2:
-                                        ((Water_Type)lista.get(modificar)).setSobrevive_agua(false);
+                                        System.out.println("Introduzca el nuevo numero de la pokedex:");
+                                        int num = sc.nextInt();
+                                        lista.get(modificar).setEntrada(num);
                                         break;
+                                        
+                                    case 3:
+                                        System.out.println("el pokemon puede sobrevivir en agua");
+                                        System.out.println("1. True");
+                                        System.out.println("2. False");
+                                        int agua = sc.nextInt();
+                                        while(agua < 1 || agua > 2){
+                                            System.out.println("el pokemon puede sobrevivir en agua");
+                                            System.out.println("1. True");
+                                            System.out.println("2. False");
+                                            agua = sc.nextInt();
+                                        }
+                                        switch(agua){
+                                            case 1:
+                                                ((Water_Type)lista.get(modificar)).setSobrevive_agua(true);
+                                                break;
+
+                                            case 2:
+                                                ((Water_Type)lista.get(modificar)).setSobrevive_agua(false);
+                                                break;
+                                        }
+                                        
+                                        
                                 }
                                 System.out.println("se completo el cambio con exito");
                                 break;
+                                
                                 
                             case 3:
                                 for (Pokemon i : lista) {
@@ -479,7 +528,7 @@ static Random rand = new Random();
                                 cont2 = 0;
                                 System.out.println("Introduzca una opcion valida:");
                                 modificar = sc.nextInt();
-                                while(modificar < 0 || modificar > lista.size() - 1){
+                                while(modificar < 0 || modificar >= lista.size() - 1){
                                     System.out.println("Introduzca una opcion valida:");
                                     modificar = sc.nextInt();
                                 }
@@ -488,20 +537,45 @@ static Random rand = new Random();
                                     System.out.println("Introduzca una opcion valida:");
                                     modificar = sc.nextInt();
                                 }
-                                System.out.println("Introduzca el nuevo nombre:");
-                                nombre2 = cs.nextLine();
-                                lista.get(modificar).setNombre(nombre2);
-                                System.out.println("Introduzca el nuevo numero de la pokedex:");
-                                num = sc.nextInt();
-                                System.out.println("Ingrese en numero su dominio sobre las plantas:");
-                                int planta = sc.nextInt();
-                                while(planta < 0 || planta > 100){
-                                    System.out.println("Introduzca el numero del 1 - 100");
-                                    System.out.println("Ingrese en numero su dominio sobre las plantas:");
-                                    planta = sc.nextInt();
+                                System.out.println("////Menu////");
+                                System.out.println("1. nombre");
+                                System.out.println("2. Pokedex");
+                                System.out.println("3. potencia de llamas");
+                                change = sc.nextInt();
+                                while(change < 1 || change > 3){
+                                    System.out.println("////Menu////");
+                                    System.out.println("1. nombre");
+                                    System.out.println("2. Pokedex");
+                                    System.out.println("3. potencia de llamas");
+                                    change = sc.nextInt();
                                 }
-                                ((Grass_Type)lista.get(modificar)).setDominio(planta);
+                                switch(change){
+                                    case 1:
+                                        System.out.println("Introduzca el nuevo nombre:");
+                                        String nombre2 = cs.nextLine();
+                                        lista.get(modificar).setNombre(nombre2);
+                                        break;
+                                        
+                                    case 2:
+                                        System.out.println("Introduzca el nuevo numero de la pokedex:");
+                                        int num = sc.nextInt();
+                                        lista.get(modificar).setEntrada(num);
+                                        break;
+                                        
+                                    case 3:
+                                        System.out.println("Ingrese en numero su dominio sobre las plantas:");
+                                        int planta = sc.nextInt();
+                                        while(planta < 0 || planta > 100){
+                                            System.out.println("Introduzca el numero del 1 - 100");
+                                            System.out.println("Ingrese en numero su dominio sobre las plantas:");
+                                            planta = sc.nextInt();
+                                        }
+                                        ((Grass_Type)lista.get(modificar)).setDominio(planta);
+                                        break;
+                                }
+                                System.out.println("se completo el cambio con exito");
                                 break;
+                                
                                 
                         }// Fin del Switch elemento
                         break;
