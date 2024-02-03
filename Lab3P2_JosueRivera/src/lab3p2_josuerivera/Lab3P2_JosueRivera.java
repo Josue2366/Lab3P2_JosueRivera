@@ -57,12 +57,12 @@ static Random rand = new Random();
                     int pokedex = sc.nextInt();
                     System.out.println("Ingrese su Naturaleza:");
                     String naturaleza = cs.nextLine();
-                    while(naturaleza .equals("Timido")
-                            && naturaleza.equals("timido")== false 
-                            && naturaleza.equals("Energetico")== false 
-                            && naturaleza.equals("energetico") == false 
-                            && naturaleza.equals("Misterioso")== false 
-                            && naturaleza .equals("misterioso") == false){
+                    while(!naturaleza .equals("Timido")
+                            && !naturaleza.equals("timido") 
+                            && !naturaleza.equals("Energetico") 
+                            && !naturaleza.equals("energetico")  
+                            && !naturaleza.equals("Misterioso") 
+                            && !naturaleza .equals("misterioso") ){
                         
                         System.out.println("Ingrese su Naturaleza:");
                         naturaleza = cs.nextLine();
@@ -99,6 +99,7 @@ static Random rand = new Random();
                                 System.out.println("el pokemon puede sobrevivir en agua");
                                 System.out.println("1. True");
                                 System.out.println("2. False");
+                                agua = sc.nextInt();
                             }
                             switch (agua){
                                 case 1:
@@ -286,7 +287,7 @@ static Random rand = new Random();
                         int bola = sc.nextInt();
                         while(bola < 0 || bola > pokeballs.size()){
                             for (Pokeball i : pokeballs) {
-                            System.out.println(i);
+                            System.out.println(pokeballs.indexOf(i)+". "+i);
                             }
                             bola = sc.nextInt();
                         }
@@ -376,7 +377,7 @@ static Random rand = new Random();
                         }
                         switch(elemento){
                             case 1:
-                               for (Pokemon i : lista) {
+                                for (Pokemon i : lista) {
                                     if (i instanceof Fire_Type && i.isCapturado()){
                                         System.out.println(lista.indexOf(i)+". "+ i);
                                         cont2 ++;
@@ -390,11 +391,12 @@ static Random rand = new Random();
                                 cont2 = 0;
                                 System.out.println("Introduzca una opcion valida:");
                                 int modificar = sc.nextInt();
-                                while(modificar < 0 || modificar > lista.size() - 1){
+                                while(modificar < 0 || modificar >= lista.size() ){
                                     System.out.println("Introduzca una opcion valida:");
                                     modificar = sc.nextInt();
                                 }
-                                while (lista.get(modificar) instanceof Fire_Type == false || lista.get(modificar).isCapturado() == false){
+                                while (lista.get(modificar) instanceof Fire_Type == false 
+                                        || lista.get(modificar).isCapturado() == false){
                                     System.out.println("Introduzca una opcion valida:");
                                     modificar = sc.nextInt();
                                 }
@@ -407,8 +409,102 @@ static Random rand = new Random();
                                 System.out.println("Introduzca la potencia de llamas:");
                                 int llamas2 = sc.nextInt();
                                 ((Fire_Type)lista.get(modificar)).setLlamas(llamas2);
+                                System.out.println("Se completo el cambio con exito");
+                                break;
+                                
+                            case 2:
+                                for (Pokemon i : lista) {
+                                    if (i instanceof Water_Type && i.isCapturado()){
+                                        System.out.println(lista.indexOf(i)+". "+ i);
+                                        cont2 ++;
+                                    }
+                                }
+                                if (cont2 == 0){
+                                    System.out.println("No se encuentran de ese tipo existente en la lista");
+                                    cont2 =0;
+                                    break;
+                                }
+                                cont2 = 0;
+                                System.out.println("Introduzca una opcion valida:");
+                                modificar = sc.nextInt();
+                                while(modificar < 0 || modificar > lista.size() - 1){
+                                    System.out.println("Introduzca una opcion valida:");
+                                    modificar = sc.nextInt();
+                                }
+                                while (lista.get(modificar) instanceof Water_Type == false 
+                                        || lista.get(modificar).isCapturado() == false){
+                                    System.out.println("Introduzca una opcion valida:");
+                                    modificar = sc.nextInt();
+                                }
+                                System.out.println("Introduzca el nuevo nombre:");
+                                nombre2 = cs.nextLine();
+                                lista.get(modificar).setNombre(nombre2);
+                                System.out.println("Introduzca el nuevo numero de la pokedex:");
+                                num = sc.nextInt();
+                                lista.get(modificar).setEntrada(num);
+                                System.out.println("el pokemon puede sobrevivir en agua");
+                                System.out.println("1. True");
+                                System.out.println("2. False");
+                                int agua = sc.nextInt();
+                                while(agua < 1 || agua > 2){
+                                    System.out.println("el pokemon puede sobrevivir en agua");
+                                    System.out.println("1. True");
+                                    System.out.println("2. False");
+                                    agua = sc.nextInt();
+                                }
+                                switch(agua){
+                                    case 1:
+                                        ((Water_Type)lista.get(modificar)).setSobrevive_agua(true);
+                                        break;
+                                        
+                                    case 2:
+                                        ((Water_Type)lista.get(modificar)).setSobrevive_agua(false);
+                                        break;
+                                }
+                                System.out.println("se completo el cambio con exito");
+                                break;
+                                
+                            case 3:
+                                for (Pokemon i : lista) {
+                                    if (i instanceof Grass_Type && i.isCapturado()){
+                                        System.out.println(lista.indexOf(i)+". "+ i);
+                                        cont2 ++;
+                                    }
+                                }
+                                if (cont2 == 0){
+                                    System.out.println("No se encuentran de ese tipo existente en la lista");
+                                    cont2 =0;
+                                    break;
+                                }
+                                cont2 = 0;
+                                System.out.println("Introduzca una opcion valida:");
+                                modificar = sc.nextInt();
+                                while(modificar < 0 || modificar > lista.size() - 1){
+                                    System.out.println("Introduzca una opcion valida:");
+                                    modificar = sc.nextInt();
+                                }
+                                while (lista.get(modificar) instanceof Grass_Type == false 
+                                        || lista.get(modificar).isCapturado() == false){
+                                    System.out.println("Introduzca una opcion valida:");
+                                    modificar = sc.nextInt();
+                                }
+                                System.out.println("Introduzca el nuevo nombre:");
+                                nombre2 = cs.nextLine();
+                                lista.get(modificar).setNombre(nombre2);
+                                System.out.println("Introduzca el nuevo numero de la pokedex:");
+                                num = sc.nextInt();
+                                System.out.println("Ingrese en numero su dominio sobre las plantas:");
+                                int planta = sc.nextInt();
+                                while(planta < 0 || planta > 100){
+                                    System.out.println("Introduzca el numero del 1 - 100");
+                                    System.out.println("Ingrese en numero su dominio sobre las plantas:");
+                                    planta = sc.nextInt();
+                                }
+                                ((Grass_Type)lista.get(modificar)).setDominio(planta);
+                                break;
                                 
                         }// Fin del Switch elemento
+                        break;
                     }
                     
                     
